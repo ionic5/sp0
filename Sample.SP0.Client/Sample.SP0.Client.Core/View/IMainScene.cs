@@ -8,6 +8,7 @@ namespace Sample.SP0.Client.Core.View
 {
     public interface IMainScene
     {
+        IMainPanel ShowMainPanel();
         ILoadingPanel ShowLoadingPanel();
     }
 }

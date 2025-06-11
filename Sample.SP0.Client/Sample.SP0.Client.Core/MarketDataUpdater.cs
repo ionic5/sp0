@@ -30,11 +30,13 @@ namespace Sample.SP0.Client.Core
         private readonly RsiPointRepository _rsiPointRepository;
         private readonly ObvPointRepository _obvPointRepository;
 
+        private readonly MainPanelControllerFactory _mainPanelControllerFactory;
+
         public MarketDataUpdater(IMainScene mainScene, StockItemInfoRepository stockItemInfoRepository, ILogger logger,
             TokenStore tokenStore, RestApiClient restApiClient, UrlSet urlSet, TypeTransformer typeTransformer,
             UpdateLogRepository updateLogRepository, DailyCandleStickRepository dailyCandleStickRepository,
             MaPointRepository maPointRepository, MfiPointRepository mfiPointRepository, MacdPointRepository macdPointRepository,
-            BBPointRepository bbPointRepository, RsiPointRepository rsiPointRepository, ObvPointRepository obvPointRepository)
+            BBPointRepository bbPointRepository, RsiPointRepository rsiPointRepository, ObvPointRepository obvPointRepository, MainPanelControllerFactory mainPanelControllerFactory)
         {
             _mainScene = mainScene;
             this._stockItemInfoRepository = stockItemInfoRepository;
@@ -51,6 +53,7 @@ namespace Sample.SP0.Client.Core
             _bbPointRepository = bbPointRepository;
             _rsiPointRepository = rsiPointRepository;
             _obvPointRepository = obvPointRepository;
+            _mainPanelControllerFactory = mainPanelControllerFactory;
         }
 
         public async void UpdateMarketData()
@@ -80,6 +83,11 @@ namespace Sample.SP0.Client.Core
 
             loadingPanel.SetMessage("Update OBV.");
             await TryUpdateObvPointRepository();
+
+            var mainPanel = _mainScene.ShowMainPanel();
+
+            var ctrl = _mainPanelControllerFactory.Create(mainPanel);
+            ctrl.Setup();
         }
 
 
