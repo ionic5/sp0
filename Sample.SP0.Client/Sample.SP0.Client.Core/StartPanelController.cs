@@ -12,14 +12,16 @@ namespace Sample.SP0.Client.Core
         private readonly ILogger _logger;
         private readonly TokenStore _tokenStore;
         private readonly UrlSet _urlSet;
+        private readonly MarketDataUpdater _marketDataUpdater;
 
-        public StartPanelController(IStartPanel startPanel, RestApiClient restApiClient, ILogger logger, TokenStore tokenStore, UrlSet urlSet)
+        public StartPanelController(IStartPanel startPanel, RestApiClient restApiClient, ILogger logger, TokenStore tokenStore, UrlSet urlSet, MarketDataUpdater marketDataUpdater)
         {
             this._startPanel = startPanel;
             _restApiClient = restApiClient;
             _logger = logger;
             _tokenStore = tokenStore;
             _urlSet = urlSet;
+            _marketDataUpdater = marketDataUpdater;
         }
 
         public async void OnStartButtonClickedEvent(object? sender, EventArgs args)
@@ -43,6 +45,8 @@ namespace Sample.SP0.Client.Core
             }
 
             SaveToken(response.Body);
+
+            _marketDataUpdater.UpdateMarketData();
         }
 
 

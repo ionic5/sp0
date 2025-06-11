@@ -13,6 +13,7 @@
         </Grid.RowDefinitions>
 
         <local:StartPanel Grid.Row="0" x:Name="StartPanel"/>
+        <local:LoadingPanel Grid.Row="0" x:Name="LoadingPanel" Visibility="Hidden"/>
         <local:DebugConsolePanel Grid.Row="1" x:Name="DebugConsolePanel"/>
     </Grid>
 </Window>
