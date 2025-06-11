@@ -13,8 +13,10 @@ namespace Sample.SP0.Client.Core
         private readonly TokenStore _tokenStore;
         private readonly UrlSet _urlSet;
         private readonly MarketDataUpdater _marketDataUpdater;
+        private readonly IMainScene _mainScene;
+        private readonly MainPanelControllerFactory _mainPanelControllerFactory;
 
-        public StartPanelController(IStartPanel startPanel, RestApiClient restApiClient, ILogger logger, TokenStore tokenStore, UrlSet urlSet, MarketDataUpdater marketDataUpdater)
+        public StartPanelController(IStartPanel startPanel, RestApiClient restApiClient, ILogger logger, TokenStore tokenStore, UrlSet urlSet, MarketDataUpdater marketDataUpdater, IMainScene mainScene, MainPanelControllerFactory mainPanelControllerFactory)
         {
             this._startPanel = startPanel;
             _restApiClient = restApiClient;
@@ -22,6 +24,8 @@ namespace Sample.SP0.Client.Core
             _tokenStore = tokenStore;
             _urlSet = urlSet;
             _marketDataUpdater = marketDataUpdater;
+            _mainScene = mainScene;
+            _mainPanelControllerFactory = mainPanelControllerFactory;
         }
 
         public async void OnStartButtonClickedEvent(object? sender, EventArgs args)
@@ -49,6 +53,13 @@ namespace Sample.SP0.Client.Core
             _marketDataUpdater.UpdateMarketData();
         }
 
+        public void OnStartOfflineButtonClickedEvent(object? sender, EventArgs args)
+        {
+            var mainPanel = _mainScene.ShowMainPanel();
+
+            var ctrl = _mainPanelControllerFactory.Create(mainPanel);
+            ctrl.Setup();
+        }
 
         private void SaveToken(TokenIssuanceBody body)
         {

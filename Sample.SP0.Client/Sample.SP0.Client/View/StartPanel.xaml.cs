@@ -10,12 +10,14 @@ namespace Sample.SP0.Client.View
     public partial class StartPanel : UserControl, IStartPanel
     {
         public event EventHandler StartButtonClickedEvent;
+        public event EventHandler StartOfflineButtonClickedEvent;
 
         public StartPanel()
         {
             InitializeComponent();
 
             StartButtonClickedEvent = (sender, args) => { };
+            StartOfflineButtonClickedEvent = (sender, args) => { };
         }
 
         public string GetAppKey()
@@ -31,6 +33,11 @@ namespace Sample.SP0.Client.View
         private void OnStartButtonClicked(object sender, RoutedEventArgs e)
         {
             StartButtonClickedEvent?.Invoke(this, e);
+        }
+
+        private void OnStartOfflineButtonClicked(object sender, RoutedEventArgs e)
+        {
+            StartOfflineButtonClickedEvent?.Invoke(this, e);
         }
     }
 }

@@ -78,8 +78,10 @@ namespace Sample.SP0.Client.View
                 dailyCandlestickRepo, maRepo, mfiRepo, macdPtRepo, bbPtRepo, rsiPtRepo,
                 obvPtRepo, mainPnlCtrlFac);
 
-            var ctrl = new StartPanelController(StartPanel, restApiClient, logger, tokenStore, urlSet, marketDataUpdater);
+            var ctrl = new StartPanelController(StartPanel, restApiClient, logger, tokenStore,
+                urlSet, marketDataUpdater, this, mainPnlCtrlFac);
             StartPanel.StartButtonClickedEvent += ctrl.OnStartButtonClickedEvent;
+            StartPanel.StartOfflineButtonClickedEvent += ctrl.OnStartOfflineButtonClickedEvent;
         }
     }
 }

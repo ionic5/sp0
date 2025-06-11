@@ -7,23 +7,23 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="AppKey" Grid.Row="0" Grid.Column="0" Margin="5"/>
-        <PasswordBox x:Name="AppKeyInput" Grid.Row="0" Grid.Column="1" Width="250" Margin="5" />
-
-        <TextBlock Text="SecretKey" Grid.Row="1" Grid.Column="0" Margin="5"/>
-        <PasswordBox x:Name="SecretKeyInput" Grid.Row="1" Grid.Column="1" Width="250" Margin="5"/>
-
-        <Button Content="시작하기" Grid.Row="2" Grid.ColumnSpan="2" Width="100" Margin="5"
-    HorizontalAlignment="Center" Click="OnStartButtonClicked"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+            <TextBlock Text="AppKey" Grid.Row="0" Grid.Column="0" Margin="5"/>
+            <PasswordBox x:Name="AppKeyInput" Grid.Row="0" Grid.Column="1" Width="250" Margin="5" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+            <TextBlock Text="SecretKey" Grid.Row="1" Grid.Column="0" Margin="5"/>
+            <PasswordBox x:Name="SecretKeyInput" Grid.Row="1" Grid.Column="1" Width="250" Margin="5"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="2">
+            <Button Content="Start Online"  Width="100" Margin="5" Click="OnStartButtonClicked"/>
+            <Button Content="Start Offline" Width="100" Margin="5" Click="OnStartOfflineButtonClicked"/>
+        </StackPanel>
     </Grid>
 </UserControl>
