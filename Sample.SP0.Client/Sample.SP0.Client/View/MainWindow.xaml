@@ -1,12 +1,18 @@
-﻿<Window x:Class="Sample.SP0.Client.MainWindow"
+﻿<Window x:Class="Sample.SP0.Client.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Sample.SP0.Client"
+        xmlns:local="clr-namespace:Sample.SP0.Client.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
 
+        <local:StartPanel Grid.Row="0" x:Name="StartPanel"/>
+        <local:DebugConsolePanel Grid.Row="1" x:Name="DebugConsolePanel"/>
     </Grid>
 </Window>
