@@ -45,6 +45,19 @@ namespace Sample.SP0.Client.View
             ObvRadioButtonCheckedEvent = (sender, args) => { };
 
             StockItemSelectedEvent = (sender, args) => { };
+            StockItemSelectedEvent = (sender, args) => { };
+
+            StockItemListPanel.StockItemSelectedEvent += (sender, args) => { StockItemSelectedEvent?.Invoke(sender, args); };
+        }
+
+        public void SetStockItmes(IEnumerable<StockItemInfo> items)
+        {
+            StockItemListPanel.SetStockItmes(items);
+        }
+
+        public void SelectFirstItem()
+        {
+            StockItemListPanel.SelectFirstItem();
         }
 
         public void DrawCandlestickChart(IEnumerable<DailyCandlestick> dailyCandlesticks)
@@ -108,16 +121,6 @@ namespace Sample.SP0.Client.View
         }
 
         public SubChartType GetEnabledSubChartType()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SelectFirstItem()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetStockItmes(IEnumerable<StockItemInfo> items)
         {
             throw new NotImplementedException();
         }
