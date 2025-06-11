@@ -14,6 +14,7 @@
         </Grid.ColumnDefinitions>
 
         <local:StockItemListPanel Grid.Column="0" x:Name="StockItemListPanel"/>
+        <local:ChartPanel Grid.Column="1" x:Name="ChartPanel"/>
 
     </Grid>
 </UserControl>

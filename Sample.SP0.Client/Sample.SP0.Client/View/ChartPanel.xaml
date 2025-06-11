@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="Sample.SP0.Client.View.ChartPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:scottplot="http://schemas.scottplot.net/2008/xaml/presentation"
+             Width="Auto" Height="Auto">
+
+    <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="2">
+            <CheckBox Content="Moving Average" Margin="2" x:Name="MAToggle" Click="OnMaToggleClicked"/>
+            <CheckBox Content="Bollinger bands" Margin="2" x:Name="BBToggle" Click="OnBBToggleClicked"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
+            <scottplot:WpfPlot x:Name="MainChartPlot" Grid.Row="0"  Margin="0"/>
+            <scottplot:WpfPlot x:Name="SubChartPlot" Grid.Row="1"  Margin="0"/>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="2">
+            <RadioButton Content="Volume" Margin="2" x:Name="VolumeRadioButton" Checked="OnVolumeRadioButtonChecked"/>
+            <RadioButton Content="RSI" Margin="2" x:Name="RSIRadioButton" Checked="OnRSIRadioButtonChecked"/>
+            <RadioButton Content="MFI" Margin="2" x:Name="MFIRadioButton" Checked="OnMFIRadioButtonChecked"/>
+            <RadioButton Content="OBV" Margin="2" x:Name="OBVRadioButton" Checked="OnOBVRadioButtonChecked"/>
+            <RadioButton Content="MACD" Margin="2" x:Name="MACDRadioButton" Checked="OnMACDRadioButtonChecked"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

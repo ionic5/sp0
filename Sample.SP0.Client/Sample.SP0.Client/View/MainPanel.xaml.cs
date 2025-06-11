@@ -45,9 +45,72 @@ namespace Sample.SP0.Client.View
             ObvRadioButtonCheckedEvent = (sender, args) => { };
 
             StockItemSelectedEvent = (sender, args) => { };
-            StockItemSelectedEvent = (sender, args) => { };
+
+            ChartPanel.MACheckBoxChangedEvent += (sender, args) => { MACheckBoxChangedEvent?.Invoke(sender, args); };
+            ChartPanel.BBCheckBoxChangedEvent += (sender, args) => { BBCheckBoxChangedEvent?.Invoke(sender, args); };
+
+            ChartPanel.VolumeRadioButtonCheckedEvent += (sender, args) => { VolumeRadioButtonCheckedEvent?.Invoke(sender, args); };
+            ChartPanel.RsiRadioButtonCheckedEvent += (sender, args) => { RsiRadioButtonCheckedEvent?.Invoke(sender, args); };
+            ChartPanel.MfiRadioButtonCheckedEvent += (sender, args) => { MfiRadioButtonCheckedEvent?.Invoke(sender, args); };
+            ChartPanel.MacdRadioButtonCheckedEvent += (sender, args) => { MacdRadioButtonCheckedEvent?.Invoke(sender, args); };
+            ChartPanel.ObvRadioButtonCheckedEvent += (sender, args) => { ObvRadioButtonCheckedEvent?.Invoke(sender, args); };
 
             StockItemListPanel.StockItemSelectedEvent += (sender, args) => { StockItemSelectedEvent?.Invoke(sender, args); };
+        }
+
+        public void DrawCandlestickChart(IEnumerable<DailyCandlestick> candlesticks)
+        {
+            ChartPanel.DrawCandlestickChart(candlesticks);
+        }
+
+        public void DrawMAChart(IEnumerable<MaPoint> points)
+        {
+            ChartPanel.DrawMAChart(points);
+        }
+
+        public void DrawBBChart(IEnumerable<BBPoint> points)
+        {
+            ChartPanel.DrawBBChart(points);
+        }
+
+        public void ClearMAChart()
+        {
+            ChartPanel.ClearMAChart();
+        }
+
+        public void ClearBBChart()
+        {
+            ChartPanel.ClearBBChart();
+        }
+
+        public void DrawVolumeChart(IEnumerable<DailyCandlestick> candleSticks)
+        {
+            ChartPanel.DrawVolumeChart(candleSticks);
+        }
+
+        public void ClearSubChart()
+        {
+            ChartPanel.ClearSubChart();
+        }
+
+        public void DrawRsiChart(IEnumerable<RsiPoint> points)
+        {
+            ChartPanel.DrawRsiChart(points);
+        }
+
+        public void DrawMfiChart(IEnumerable<MfiPoint> points)
+        {
+            ChartPanel.AddMFIPoints(points);
+        }
+
+        public void DrawObvChart(IEnumerable<ObvPoint> points)
+        {
+            ChartPanel.AddOBVPoints(points);
+        }
+
+        public void DrawMacdChart(IEnumerable<MacdPoint> points)
+        {
+            ChartPanel.AddMACDPoints(points);
         }
 
         public void SetStockItmes(IEnumerable<StockItemInfo> items)
@@ -60,79 +123,24 @@ namespace Sample.SP0.Client.View
             StockItemListPanel.SelectFirstItem();
         }
 
-        public void DrawCandlestickChart(IEnumerable<DailyCandlestick> dailyCandlesticks)
+        public SubChartType GetEnabledSubChartType()
         {
-            throw new NotImplementedException();
-        }
-
-        public void DrawMAChart(IEnumerable<MaPoint> points)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearMAChart()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DrawBBChart(IEnumerable<BBPoint> points)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearBBChart()
-        {
-            throw new NotImplementedException();
+            return ChartPanel.GetEnabledSubChartType();
         }
 
         public bool IsOverlayChartEnabled(OverlayChartType chartType)
         {
-            throw new NotImplementedException();
-        }
-
-        public void DrawMacdChart(IEnumerable<MacdPoint> points)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DrawMfiChart(IEnumerable<MfiPoint> points)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DrawObvChart(IEnumerable<ObvPoint> points)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DrawRsiChart(IEnumerable<RsiPoint> points)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DrawVolumeChart(IEnumerable<DailyCandlestick> candleSticks)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearSubChart()
-        {
-            throw new NotImplementedException();
-        }
-
-        public SubChartType GetEnabledSubChartType()
-        {
-            throw new NotImplementedException();
+            return ChartPanel.IsOverlayChartEnabled(chartType);
         }
 
         public void SelectVolumeRadioButton()
         {
-            throw new NotImplementedException();
+            ChartPanel.SelectVolumeRadioButton();
         }
 
         public void ClearCharts()
         {
-            throw new NotImplementedException();
+            ChartPanel.ClearCharts();
         }
     }
 }
