@@ -191,6 +191,9 @@ namespace Sample.SP0.Client.View
 
             MainChartPlot.Plot.Layout.Fixed(new PixelPadding(100, 10, 0, 0));
 
+            MainChartPlot.Plot.Axes.Link(MainChartPlot.Plot.Axes.Bottom, SubChartPlot.Plot.Axes.Bottom, SubChartPlot.Plot);
+            SubChartPlot.Plot.Axes.Link(SubChartPlot.Plot.Axes.Bottom, MainChartPlot.Plot.Axes.Bottom, MainChartPlot.Plot);
+
             MainChartPlot.Refresh();
         }
 
